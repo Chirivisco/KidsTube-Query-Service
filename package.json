@@ -1,0 +1,37 @@
+{
+  "name": "kidstube-query-service",
+  "version": "1.0.0",
+  "description": "Servicio de consultas GraphQL para KidsTube",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chirivisco/KidsTube-Query-Service.git"
+  },
+  "keywords": [
+    "graphql",
+    "api",
+    "kids",
+    "video",
+    "streaming"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Chirivisco/KidsTube-Query-Service/issues"
+  },
+  "homepage": "https://github.com/Chirivisco/KidsTube-Query-Service#readme",
+  "dependencies": {
+    "apollo-server-express": "^3.13.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0",
+    "graphql": "^16.10.0",
+    "mongoose": "^8.13.1",
+    "nodemon": "^3.1.9"
+  }
+}
