@@ -50,6 +50,7 @@ const typeDefs = gql`
         user(id: ID!): User
         profiles: [Profile!]!
         profile(id: ID!): Profile
+        profilesByUser(userId: ID!): [Profile!]!
         videos: [Video!]!
         video(id: ID!): Video
         playlists: [Playlist!]!

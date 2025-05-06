@@ -28,6 +28,14 @@ const resolvers = {
         profile: async (_, { id }) => {
             return await Profile.findById(id).populate('user');
         },
+        profilesByUser: async (_, { userId }) => {
+            try {
+                return await Profile.find({ user: userId }).populate('user');
+            } catch (error) {
+                console.error('Error al obtener perfiles por usuario:', error);
+                throw error;
+            }
+        },
 
         // Resolvers para Videos
         videos: async () => {
