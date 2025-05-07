@@ -31,19 +31,6 @@ const { gql } = require('apollo-server-express');
  */
 
 const typeDefs = gql`
-    /**
-     * Tipo User
-     * @typedef {Object} User
-     * @property {string} id - ID único del usuario
-     * @property {string} email - Email del usuario
-     * @property {string} phone - Teléfono del usuario
-     * @property {string} name - Nombre completo
-     * @property {string} country - País del usuario
-     * @property {string} birthdate - Fecha de nacimiento
-     * @property {string} profiles - Perfiles asociados
-     * @property {string} createdAt - Fecha de creación
-     * @property {string} updatedAt - Fecha de actualización
-     */
     type User {
         id: ID!
         email: String!
@@ -56,18 +43,6 @@ const typeDefs = gql`
         updatedAt: String!
     }
 
-    /**
-     * Tipo Profile
-     * @typedef {Object} Profile
-     * @property {string} id - ID único del perfil
-     * @property {string} fullName - Nombre completo
-     * @property {string} pin - PIN de acceso
-     * @property {string} avatar - URL del avatar
-     * @property {string} role - Rol del perfil (parent/child)
-     * @property {string} userId - ID del usuario propietario
-     * @property {string} createdAt - Fecha de creación
-     * @property {string} updatedAt - Fecha de actualización
-     */
     type Profile {
         id: ID!
         fullName: String!
@@ -80,17 +55,6 @@ const typeDefs = gql`
         updatedAt: String!
     }
 
-    /**
-     * Tipo Video
-     * @typedef {Object} Video
-     * @property {string} id - ID único del video
-     * @property {string} name - Nombre del video
-     * @property {string} url - URL del video
-     * @property {string} description - Descripción del video
-     * @property {string} playlistId - ID de la playlist
-     * @property {string} createdAt - Fecha de creación
-     * @property {string} updatedAt - Fecha de actualización
-     */
     type Video {
         id: ID!
         name: String!
@@ -101,17 +65,6 @@ const typeDefs = gql`
         updatedAt: String!
     }
 
-    /**
-     * Tipo Playlist
-     * @typedef {Object} Playlist
-     * @property {string} id - ID único de la playlist
-     * @property {string} name - Nombre de la playlist
-     * @property {string} description - Descripción de la playlist
-     * @property {[string]} profiles - IDs de perfiles asociados
-     * @property {[Video]} videos - Videos en la playlist
-     * @property {string} createdAt - Fecha de creación
-     * @property {string} updatedAt - Fecha de actualización
-     */
     type Playlist {
         id: ID!
         name: String!
@@ -132,6 +85,15 @@ const typeDefs = gql`
         video(id: ID!): Video
         playlists: [Playlist!]!
         playlist(id: ID!): Playlist
+        playlistsByProfile(profileId: ID!): [Playlist!]!
+        playlistsByUser(userId: ID!): [Playlist!]!
+    }
+
+    type Mutation {
+        updatePlaylist(id: ID!, name: String, description: String): Playlist!
+        addVideoToPlaylist(playlistId: ID!, videoId: ID!): Playlist!
+        updateVideo(id: ID!, name: String, url: String, description: String): Video!
+        deleteVideo(id: ID!): Boolean!
     }
 `;
 
